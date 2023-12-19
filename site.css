@@ -1,0 +1,14 @@
+html,
+body {
+  height: 100%;
+}
+
+.main-content {
+  max-width: 430px;
+  padding: 1rem;
+}
+
+.main-content .form-floating:focus-within {
+  z-index: 2;
+}
+
