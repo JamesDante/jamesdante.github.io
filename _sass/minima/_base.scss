@@ -192,20 +192,6 @@ pre {
   }
 }
 
-.header-wrapper{
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: $spacing-unit * 2;
-  padding-left: $spacing-unit * 2;
-  @extend %clearfix;
-
-  @include media-query($on-laptop) {
-    padding-right: $spacing-unit * 0.5;
-    padding-left: $spacing-unit * 0.5;
-  }
-}
-
-
 /**
  * Clearfix
  */
