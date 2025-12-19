@@ -13,9 +13,7 @@
   {%- if site.rss -%}<li><a href="{{ 'feed.xml' | relative_url }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg> <span>{{ site.rss | escape }}</span></a></li>{%- endif -%}
   {%- if site.email -%}
     <li><a href="mailto:{{ site.email }}">
-      <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 4C2 2.897 2.897 2 4 2H20C21.103 2 22 2.897 22 4V20C22 21.103 21.103 22 20 22H4C2.897 22 2 21.103 2 20V4ZM20 4H4L12 11L20 4ZM20 20V7.236L12 13.472L4 7.236V20H20Z"/>
-      </svg>
+      <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#email' | relative_url }}"></use></svg>
     </a></li>
   {%- endif -%}
 </ul>
