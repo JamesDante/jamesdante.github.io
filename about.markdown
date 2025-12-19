@@ -1,10 +1,10 @@
 ---
 layout: page
-title: About
+#title: About
 permalink: /about/
 ---
 
-![The San Juan Mountains are beautiful](https://m.media-amazon.com/images/I/61PRZyaua3L._AC_UF894,1000_QL80_.jpg "San Juan Mountains")
+![know yourself](https://m.media-amazon.com/images/I/61PRZyaua3L._AC_UF894,1000_QL80_.jpg "know yourself")
 
 
 You don’t have to know me, but you do need to know yourself.
