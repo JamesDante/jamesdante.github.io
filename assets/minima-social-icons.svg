@@ -30,7 +30,7 @@
 </symbol>
 
 <symbol id="email" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414">
-  <path fill-rule="evenodd"  d="M3.75 5.25L3 6V18L3.75 18.75H20.25L21 18V6L20.25 5.25H3.75ZM4.5 7.6955V17.25H19.5V7.69525L11.9999 14.5136L4.5 7.6955ZM18.3099 6.75H5.68986L11.9999 12.4864L18.3099 6.75Z"></path>
+   <path d="M2 4C2 2.897 2.897 2 4 2H20C21.103 2 22 2.897 22 4V20C22 21.103 21.103 22 20 22H4C2.897 22 2 21.103 2 20V4ZM20 4H4L12 11L20 4ZM20 20V7.236L12 13.472L4 7.236V20H20Z"/>
 </symbol>
 
 </svg>
