@@ -113,7 +113,6 @@
 
 .contact-list,
 .social-media-list {
-  display: flex;
   list-style: none;
   margin-left: 0;
 }
@@ -126,9 +125,12 @@
 }
 
 .footer-col {
-  float: right;
+  float: left;
   margin-bottom: $spacing-unit * 0.5;
   padding-left: $spacing-unit * 0.5;
+
+  display: flex;
+  justify-content: flex-end;
 }
 
 .footer-col-1 {
