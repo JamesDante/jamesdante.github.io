@@ -65,7 +65,13 @@ DELETED
 | PENDING      | ACTIVE    | 是       | 必填       | 是       |  
 | ACTIVE   | ACTIVE        |否       | 只读       | 是       |  
 | ACTIVE      | SUSPENDED    | 是       | 无       | 否       |  
-| DELETED   | ACTIVE        |否      | 无       | 否       |  
+| DELETED   | ACTIVE        |否      | 无       | 否       |   
+
+| Month    | Savings |
+| -------- | ------- |
+| January  | $250    |
+| February | $80     |
+| March    | $420    |   
 
 这里还有一个比较容易忽略的点，就是历史数据迁移，所以还需要验证：  
 1. 数据是否能被读取。  
@@ -73,7 +79,8 @@ DELETED
 
 如果一个 bug 被修过、又以另一种形式回来，那几乎可以肯定：**修的是表象，不是模型**。  
 
-如果一个团队里： 
+如果一个团队里：  
+
 QA 被要求“保证质量”  
 开发被允许“快速迭代”  
 需求不断变化又希望“bug 越来越少”  
