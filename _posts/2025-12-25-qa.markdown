@@ -67,7 +67,7 @@ DELETED
 | ACTIVE      | SUSPENDED    | 是       | 无       | 否       |  
 | DELETED   | ACTIVE        |否      | 无       | 否       |   
 
-| Month    | Savings | Savings | Savings | Savings |
+| 起始状态    | 目标状态 | 是否允许 | 要求 | 回归 |
 | -------- | ------- | ------- | ------- | ------- |
 | January  | $250    | $250    | $250    | $250    |
 | February | $80     | $250    | $250    | $250    |
