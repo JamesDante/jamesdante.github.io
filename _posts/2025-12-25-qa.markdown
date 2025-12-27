@@ -71,7 +71,8 @@ DELETED
 | -------- | ------- | ------- | ------- | ------- |
 | PENDING  | ACTIVE    | 是    | 必填    | 是    |
 | ACTIVE | ACTIVE    | 否    | 只读    | 是    |
-| ACTIVE    | SUSPENDED    | 是    | 无    | 否    |   
+| ACTIVE    | SUSPENDED    | 是    | 无    | 否    |  
+| DELETED    | ACTIVE    | 否    | 无    | 否    |   
 
 这里还有一个比较容易忽略的点，就是历史数据迁移，所以还需要验证：  
 1. 数据是否能被读取。  
