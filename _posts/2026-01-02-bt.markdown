@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "数据的索引结构在SSD硬盘中是否还有意义"
+title:  "数据库的B+树索引在SSD硬盘中是否还有意义"
 date:   2026-01-02 11:07:41 +0800
 categories: 算法与数据结构
 ---
