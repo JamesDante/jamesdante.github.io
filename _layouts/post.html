@@ -1,6 +1,14 @@
 ---
 layout: default
 ---
+{%- if page.ref -%}
+  {%- assign posts = site.posts | where: "ref", page.ref -%}
+  {%- for post in posts -%}
+    {%- if post.lang != page.lang -%}
+<script>window.pageLang = "{{ page.lang }}"; window.langAlternate = "{{ post.url | relative_url }}";</script>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
@@ -12,20 +20,6 @@ layout: default
       </time>
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {%- endif -%}
-
-      {%- if page.ref -%}
-        {%- assign posts = site.posts | where: "ref", page.ref -%}
-        {%- for post in posts -%}
-          {%- if post.lang != page.lang -%}
-            &nbsp;·&nbsp;
-            {%- if post.lang == "en" -%}
-              <a class="lang-switch" href="{{ post.url | relative_url }}">English</a>
-            {%- else -%}
-              <a class="lang-switch" href="{{ post.url | relative_url }}">中文</a>
-            {%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
       {%- endif -%}
     </p>
   </header>
