@@ -1,0 +1,85 @@
+---
+layout: post
+title:  "How Small Teams Can Design QA to Ensure Software Quality"
+date:   2025-12-27 11:07:41 +0800
+categories: Project Management
+lang: en
+ref: qa
+---
+
+Many small and mid-sized development teams are already stretched thin on engineers — dedicating anyone full-time to QA is simply not realistic. The result is predictable: users receive products riddled with issues. Minor ones draw complaints; serious ones end the relationship.
+
+Ask developers to cover QA themselves and you'll find that everyone claims testing is done, yet you open the product and hit bugs immediately. Going back and forth like this wastes time and, more damaging, drains everyone's energy and morale.
+
+We can be agile in requirements management and development. Can we apply the same philosophy to QA? After all, you can't say a bug fix is incremental — a bug can keep reappearing, and "fixing A breaks B" is extremely common.
+
+If QA can't be "agile the same way requirements and development are," can we at least be agile in **how we control risk**?
+
+We can — but it requires a shift in perspective. The traditional model is "once you're done, I'll come find the problems." That's pure waterfall. Making it agile means asking: **how do we surface problems as early as possible?**
+
+This means QA happens alongside development. Easy to say; genuinely difficult to execute. Agile QA isn't about making bugs disappear faster — it's about making **where the system will break next** more predictable.
+
+Developers are like people holding hammers — everything looks like a nail. Users don't think that way. They interact with a system in every imaginable manner.
+
+So every change needs to answer three questions:
+1. Which abstraction layer does it modify?
+2. Who depends on that layer?
+3. Does it change a state invariant?
+
+A concrete example — validating field legality:
+
+Obvious problem: UI → validation.
+Subtle problems: data repair scripts, historical data and third-party systems, conflicts between null validation and format validation.
+
+State invariants to check:
+1. Does this validation-related behavior affect system state?
+2. Is this field required to have a value in certain workflows?
+3. What does the field mean in the business domain?
+
+```
+Order status = PAID → payment_id must exist
+User status = ACTIVE → must have verified_at
+Critical fields are read-only, etc.
+```
+
+Once a business domain is affected, QA generally needs to run a full regression over related state transitions.
+
+**Full regression over related state transitions** isn't about exhaustively testing every case — it's a strictly scoped but depth-focused QA activity. It sounds fancy but it comes down to three factors:
+1. State
+2. Transition
+3. Invariant (rule)
+
+```
+Field: verified_at
+Rule: user.status = ACTIVE → verified_at != null
+```
+
+Related transitionable states might include:
+```
+PENDING
+ACTIVE
+SUSPENDED
+DELETED
+```
+
+A state transition matrix gives you a clear picture of the full regression scope for a given field:
+
+| From | To | Allowed | Requirement | Regress |
+|---|---|---|---|---|
+| PENDING | ACTIVE | Yes | Required | Yes |
+| ACTIVE | ACTIVE | No | Read-only | Yes |
+| ACTIVE | SUSPENDED | Yes | None | No |
+| DELETED | ACTIVE | No | None | No |
+
+One easy-to-overlook point: historical data migration. You also need to verify:
+1. Can the data be read?
+2. Can the data be modified?
+
+If a bug has been fixed and comes back in another form, it almost always means: **you fixed the symptom, not the model**.
+
+If a team has:
+- QA expected to "guarantee quality"
+- Developers allowed to "iterate fast"
+- Requirements constantly changing while expecting "fewer and fewer bugs"
+
+That's not a QA agility problem. That's management doing an impossible triangle and calling it a plan.

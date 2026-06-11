@@ -254,3 +254,48 @@
     }
   }
 }
+
+
+/**
+ * Language switching
+ */
+.lang-tabs {
+  margin-bottom: $spacing-unit * 0.5;
+
+  .lang-tab {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid $grey-color-light;
+    border-radius: 3px;
+    margin-right: 8px;
+    font-size: $small-font-size;
+    color: $grey-color;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s;
+
+    &:hover {
+      background-color: $grey-color-light;
+      color: $text-color;
+    }
+
+    &.active {
+      background-color: $grey-color-dark;
+      border-color: $grey-color-dark;
+      color: #fff;
+    }
+  }
+}
+
+.lang-switch {
+  font-size: $small-font-size;
+  color: $grey-color;
+  border: 1px solid $grey-color-light;
+  border-radius: 3px;
+  padding: 1px 8px;
+  text-decoration: none;
+
+  &:hover {
+    color: $text-color;
+    border-color: $grey-color;
+  }
+}

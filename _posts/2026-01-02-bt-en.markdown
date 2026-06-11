@@ -1,0 +1,49 @@
+---
+layout: post
+title:  "Does the B+ Tree Index Still Matter in the SSD Era?"
+date:   2026-01-02 11:07:41 +0800
+categories: Algorithms & Data Structures
+lang: en
+ref: bt
+---
+
+A mechanical hard drive works by spinning metal platters coated with a magnetic layer, storing 0s and 1s as magnetic orientations. The read process goes roughly like this:
+
+1. To access a data block, the platters spin continuously.
+2. The read head moves to the target track (seek time).
+3. The system waits for the target sector to rotate under the head (rotational latency).
+4. The head senses magnetic field changes, converts them to electrical signals, and passes them up to the system.
+
+Data is scattered all over the disk, so reading it requires seeking. In a database table with massive amounts of data, a query causes the read head to zigzag constantly — slow to the point of being nearly unusable.
+
+To optimize read/query performance, people invented **indexes** — essentially an ordered lookup table, like a dictionary's table of contents, trading space for time.
+
+Because of how computers work, implementing this concept requires a data structure. For indexes, that structure is the **B+ tree**.
+
+The B+ tree is a fairly advanced data structure. Its operations are somewhat involved (though the basics are still search, insert, and delete). I won't go deep here — if you want more detail, see [B+ tree on Wikipedia](https://en.wikipedia.org/wiki/B%2B_tree).
+
+The reason B+ trees were chosen for indexes on mechanical disks is precisely because seek time is slow, and the B+ tree minimizes it:
+1. Each node stores many keys.
+2. Tree height is extremely low (3–4 levels can handle tens of millions of rows).
+3. Sequential traversal is very fast.
+
+Because B+ trees are short and wide, let's use MySQL InnoDB as an example. A typical page size is 16KB; a non-leaf node can hold around 1,000 child pointers. One disk I/O = reading one page. This means a query requires only 3–4 random I/Os, dramatically reducing seeks.
+
+When accessing data in MySQL InnoDB:
+1. Start from the root node, traverse level by level (binary search at each level).
+2. Reach the leaf node.
+3. Retrieve the primary key and look up the full row (if not a covering index).
+
+```
+1000³ = 1,000,000,000 rows
+```
+
+Even with a billion rows, only 4 disk page accesses are needed.
+
+B+ trees drastically reduce I/O. But SSDs today have extremely fast I/O — does that make this data structure irrelevant?
+
+Not exactly — it's more accurate to say B+ trees are **no longer the only option**. Structures like LSM Trees now address different scenarios. But B+ trees still have their irreplaceable niche.
+
+In the SSD era, B+ trees have become semi-memory-resident: root and intermediate nodes almost always stay in memory. Reading follows the leaf-node linked list, which means precise targeting, stable latency, high memory hit rates, minimal I/O jitter, and strong P99 stability.
+
+So today, B+ trees solve a **structural system problem**, not simply a latency or performance problem.

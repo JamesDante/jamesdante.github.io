@@ -10,21 +10,46 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
-    <ul class="post-list">
+    <div class="lang-tabs">
+      <a class="lang-tab lang-tab-zh active" href="#" onclick="showLang('zh'); return false;">中文</a>
+      <a class="lang-tab lang-tab-en" href="#" onclick="showLang('en'); return false;">English</a>
+    </div>
+
+    <ul class="post-list post-list-zh">
       {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
+        {%- if post.lang == nil or post.lang == "zh" -%}
+        <li>
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {%- if site.show_excerpts -%}
+            {{ post.excerpt }}
+          {%- endif -%}
+        </li>
         {%- endif -%}
-      </li>
+      {%- endfor -%}
+    </ul>
+
+    <ul class="post-list post-list-en" style="display:none">
+      {%- for post in site.posts -%}
+        {%- if post.lang == "en" -%}
+        <li>
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {%- if site.show_excerpts -%}
+            {{ post.excerpt }}
+          {%- endif -%}
+        </li>
+        {%- endif -%}
       {%- endfor -%}
     </ul>
 
@@ -32,3 +57,16 @@ layout: default
   {%- endif -%}
 
 </div>
+
+<script>
+function showLang(lang) {
+  document.querySelector('.post-list-zh').style.display = lang === 'zh' ? 'block' : 'none';
+  document.querySelector('.post-list-en').style.display = lang === 'en' ? 'block' : 'none';
+  document.querySelector('.lang-tab-zh').classList.toggle('active', lang === 'zh');
+  document.querySelector('.lang-tab-en').classList.toggle('active', lang === 'en');
+  localStorage.setItem('preferred-lang', lang);
+}
+// Restore preference on load
+var pref = localStorage.getItem('preferred-lang');
+if (pref) showLang(pref);
+</script>

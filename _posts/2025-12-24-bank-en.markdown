@@ -1,0 +1,99 @@
+---
+layout: post
+title:  "How Banking System Architecture Works"
+date:   2025-12-24 10:48:41 +0800
+categories: Architecture
+lang: en
+ref: bank
+---
+
+If a bank's operations staff UPDATE an account balance directly in the database, would anyone notice?
+
+The answer is actually quite simple: "Almost certainly yes!"
+
+Why? Because the account balance you see is actually a derived value — it's computed from your transaction history. Change the balance directly and the audit trail immediately exposes the inconsistency: your transaction records won't match your balance at all. More precisely, the balance is a **constrained result**, not a free-form field.
+
+What does that transaction history look like? Anyone old enough will remember passbooks — those little booklets that recorded every deposit and withdrawal alongside a running balance.
+
+This brings us to the cornerstone of banking systems: **double-entry bookkeeping**.
+
+Double-entry bookkeeping originates from accounting. It was designed to solve two problems:
+1. Maintaining the balance between assets, liabilities, and equity.
+2. Preventing fraud and omissions.
+
+Accounting has a fundamental equation: **Assets = Liabilities + Equity**
+
+This means when you deposit money, it's not just your account that changes — the bank's accounts change too.
+
+A simple example:
+
+You deposit 100 yuan into the bank.
+
+| Bank's perspective | Change |
+|---|---|
+| Assets | Debit: +100 cash |
+| Liabilities | Credit: +100 deposits |
+
+A quick note on "debit" and "credit" in accounting — these have nothing to do with borrowing or repaying money. They are simply **conventional directions for recording entries**.
+
+Simple rule:
+- Assets / Expenses: debit increases, credit decreases
+- Liabilities / Equity / Revenue: credit increases, debit decreases
+
+In short, these constraints mean the system must always be in balance. Any change to any variable breaks that balance, and the system must enforce constraints to restore it.
+
+If we design a system based on these principles:
+
+**Maintaining balance between assets, liabilities, and equity → the data model cannot be a simple transaction log; it must be a set of constraints that cannot be violated.**
+
+A plain transaction log like this cannot guarantee system balance:
+```
+transactions(id, amount, type)
+```
+
+A balance-first design looks like this:
+```
+Account(id, type)                        // Asset / Liability / Equity
+LedgerEntry(account_id, debit, credit)   // Atomic account change
+Journal(id, date)                        // Transaction boundary — a concrete event (e.g. customer deposit, payroll, invoice receipt)
+JournalLine(journal_id, account_id, debit, credit)  // The specific impact on each account
+```
+
+**Preventing fraud and omissions → unbalanced data simply cannot be written to the database.**
+
+Transactions are atomic; debit and credit cannot be split:
+```
+Journal:
+  - Debit: cash asset +100
+  - Credit: customer deposit liability +100
+```
+
+Before writing, validate that debits equal credits:
+```
+SUM(debit) == SUM(credit)
+```
+
+Other implications: since a user's balance is calculated from transaction records, database permissions designed for both practicality and security only need to allow INSERT — UPDATE is unnecessary.
+
+Final result:
+```
+balance = SUM(debit) - SUM(credit)   // for asset accounts
+balance = SUM(credit) - SUM(debit)   // for liability/equity accounts
+```
+
+In a banking system, **data is not a "design pattern" — it's more like cause and effect. A deposit is not a field; it's the inevitable result of a chain of conditions**.
+
+None of this is new to the digital age. Humans were doing this by hand long before computers existed. Modern banking systems are simply the product of ancient wisdom meeting modern technology.
+
+One final question: why do so many commercial systems claim to use double-entry bookkeeping but are actually single-sided?
+
+Because most commercial systems prioritize: correct workflow > numbers that look right > accounting conservation.
+
+A quick test to tell whether a system is truly double-entry:
+1. Does the system layer **prohibit single-sided writes**?
+2. Can you **directly modify a balance**? (As mentioned at the start of this post.)
+3. Is the **cause-and-effect chain** traceable?
+
+Most commercial systems are operational systems — their main goal is smooth business workflow. Reports are mostly there to "explain" things, not to enforce constraints at the data layer.
+
+Modern systems also tend to be modular. In a familiar inventory management system, accounting is just one module — a compromise for performance and ease of use. Commercial systems need backward compatibility; customers complain about slowness and complexity. This leads to balances being maintained rather than derived, producing systems that are **logically double-entry but causally single-sided**. When the architecture isn't accounting-centric from the start, retrofitting true double-entry is nearly impossible — and organizational factors make it even harder.

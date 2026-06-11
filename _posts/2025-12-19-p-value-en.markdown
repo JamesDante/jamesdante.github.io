@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "Null Hypothesis, Alternative Hypothesis, and p-value"
+date:   2025-12-18 22:34:41 +0800
+categories: Statistics
+lang: en
+ref: p-value
+---
+
+In survey and questionnaire research, you frequently encounter hypotheses. Why hypotheses? Because the real world is full of complexity and uncertainty — hypotheses are a rigorous, scientific way to express results.
+
+You want to know: **"Does the world I'm observing look like the world described by my hypothesis?"** After running a large-scale study, the results are typically one of two things:
+
+- No, it doesn't — the null hypothesis is probably false.
+- It might — we simply can't refute it.
+
+To keep this post readable, I'll avoid mathematical formulas as much as possible.
+
+**Alternative Hypothesis (Ha)**: Predicts that a significant difference exists.
+
+**Null Hypothesis (H0)**: Predicts that no difference exists.
+
+> Example: Suppose you're testing whether a new drug effectively lowers blood pressure.
+> Ha: The new drug has an effect on blood pressure.
+> H0: The new drug has no effect on blood pressure.
+
+**p-value**: In hypothesis testing, the p-value helps you decide whether to reject the null hypothesis. In plain terms, it's a probability — the smaller it is, the more inconsistent the observed result is with the null hypothesis, and the stronger the case for rejecting it.
+
+> Using the example above: the smaller the p-value, the more likely it is that "this drug has no effect on blood pressure" is false.
+
+But how small is small enough? That's where the concept of significance level comes in.
+
+**Significance Level (α)**: Typically set at 0.05, 0.01, or 0.10. This is the threshold for rejecting the null hypothesis. Why these values? Mostly convention — everyone uses them, so they stuck.
+
+> p < α: Reject the null hypothesis; the observed effect is statistically significant.
+> p ≥ α: Fail to reject the null hypothesis; not enough evidence to conclude an effect exists.
+
+So how is the p-value actually calculated? Common methods include the z-test, t-test, and chi-square test. I won't go into detail here, but you can explore [the z-test](https://medium.com/@jamesdante/null-hypothesis-alternative-hypothesis-and-p-value-81b1997a15e0) and [the chi-square test](https://www.shuxuele.com/data/chi-square-test.html) further.
+
+The core logic behind all these methods is: **"Given that the null hypothesis is true, what is the probability of observing a result at least as extreme as this one?"** That probability is the p-value — and it's precisely why a very small p-value leads us to reject the null.
+
+Each method targets a different type of question:
+
+Chi-square test: Does a distribution match expectations? Typical scenario: Is gender related to whether someone has a disease?
+z-test / t-test: Is there a difference in means? Typical scenario: Is the average blood pressure different between two groups?
+
+z-test: Parameters are known; you're just verifying deviation.
+t-test: Even the scale itself is being estimated.
+
+Accordingly, they apply to different data types:
+Chi-square test: Categorical data — e.g., male/female, yes/no, A/B/C
+z-test / t-test: Continuous data — e.g., blood pressure, height, test scores
+
+So — have we come to understand the real world through statistics?

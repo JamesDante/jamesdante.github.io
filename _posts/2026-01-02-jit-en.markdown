@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Why NeXT's Highly Automated JIT Manufacturing Never Carried Over to Apple"
+date:   2026-01-02 11:07:41 +0800
+categories: Production Management
+lang: en
+ref: jit
+---
+
+NeXT was Steve Jobs' second entrepreneurial venture, and during that period he experimented with many novel approaches to production management. Manufacturing used what is now known in lean production as JIT (Just-In-Time). In 1992, Jobs shared at MIT Sloan that inventory is genuinely bad — nobody likes it. Inventory money might as well be used for something meaningful, because holding it is deeply inefficient. The goal was real JIT: as long as orders come in and parts arrive, delivery happens every day in a transparent process.
+
+Their approach, broadly:
+1. Treat manufacturing problems as software problems — software fully controls the factory production process. (Inspired by Steve Wheeler.)
+2. Hire software engineers to participate in factory manufacturing R&D.
+3. Design and build their own factory robots. (Inspired by Japanese factories; they discovered building their own was cheaper than buying.)
+4. Apply object-oriented design to factory production control workflows. (Not unusual today, but they were using this in actual production environments in the early 1990s.)
+5. Sign agreements with suppliers to build raw-material warehouses adjacent to the factory and establish a shared materials database.
+
+The story after that: NeXT exited the hardware business due to market conditions. But if JIT was so wonderful, why hasn't Apple adopted it widely?
+
+The truth is JIT makes the production supply chain more fragile. Suppliers cause surprises. Factory equipment needs constant iteration. Software needs constant updates to keep pace with the production environment. Security audits can only happen at runtime. The fact that they designed and built their own factory robots signals that this production model was more like Japanese-style craftsmanship.
+
+Apple is a global company that needs standardized factory assembly lines and a global supply chain. **Industrial replication** matters far more to Apple. NeXT shipped tens of thousands of units; Apple ships by the hundreds of millions. What Apple needs is an industrial system that is auditable, replicable, and recallable.
+
+In theory, more capital means more advanced production investment — but efficiency and scale can't grow indefinitely. Beyond a certain point, each additional unit of investment yields less and less improvement, meaning the return per unit of capital falls, and margins compress. So JIT is great, but it doesn't fit Apple's strategic needs.
+
+One more point about JIT: in *Thinking in Systems*, there's a case study about a car dealership that, wanting faster vehicle delivery, devised a plan: since factory production can't be controlled, they'd use sales data to forecast demand and stock inventory in advance. The result? System imbalance — inventory fluctuations actually increased. Modern approaches incorporate far more factors and conditions to improve forecasting, but the original mistake was assuming the system could be controlled and predicted.
+
+If the system can't be predicted or controlled, should we just give up? Not quite. Systems can't be controlled or predicted, but they are conceptual things — as long as the goal is clear, they can be **designed and restructured**.
