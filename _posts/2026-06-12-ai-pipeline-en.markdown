@@ -11,6 +11,8 @@ I recently built something with a recursive feel to it: a multi-agent pipeline t
 
 Feed it a curriculum outline, and it automatically produces 21 chapters of bilingual technical documentation — complete with code examples, architecture diagrams, review, and auto-fixing. It's open source: [github.com/jamesdante/ai-coding-101](https://github.com/jamesdante/ai-coding-101)
 
+Read the tutorial: [jamesdante.github.io/ai-coding-101](https://jamesdante.github.io/ai-coding-101/)
+
 ## Pipeline Structure
 
 Seven agents, running in sequence, each with a single responsibility:
@@ -86,3 +88,5 @@ All chapters bilingual, Chinese and English in sync.
 A multi-agent system solving a real problem. Each agent has a single responsibility, hands off structured JSON to the next, and the whole pipeline has review, repair, and verification built in. The design mirrors exactly the principles the course teaches.
 
 Code and prompts are fully open: [github.com/jamesdante/ai-coding-101](https://github.com/jamesdante/ai-coding-101)
+
+Tutorial: [jamesdante.github.io/ai-coding-101](https://jamesdante.github.io/ai-coding-101/)

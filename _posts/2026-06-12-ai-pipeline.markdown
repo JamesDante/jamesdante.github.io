@@ -11,6 +11,8 @@ ref: ai-pipeline
 
 输入一份大纲，自动输出 21 章双语技术文档，带代码示例、架构图、审校修复全流程。已开源：[github.com/jamesdante/ai-coding-101](https://github.com/jamesdante/ai-coding-101)
 
+直接访问教程：[jamesdante.github.io/ai-coding-101](https://jamesdante.github.io/ai-coding-101/)
+
 ## 流水线结构
 
 七个 Agent，顺序执行，职责各自单一：
@@ -86,3 +88,5 @@ Prompt 工程 → 全栈 AI 辅助开发 → Tool Calling / MCP / 多 Agent / Co
 多 Agent 系统解决一个真实问题。每个 Agent 职责单一，用结构化 JSON 交接，有审校、有修复、有验证。整套流程和课程里讲的设计原则是一致的。
 
 代码和 prompt 全部开源：[github.com/jamesdante/ai-coding-101](https://github.com/jamesdante/ai-coding-101)
+
+教程地址：[jamesdante.github.io/ai-coding-101](https://jamesdante.github.io/ai-coding-101/)
