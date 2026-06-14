@@ -1,0 +1,81 @@
+---
+layout: post
+title: "How Amazon Became the World's Top Revenue Company"
+date: 2026-06-14 10:00:00 +0800
+categories: Business
+lang: en
+ref: amazon
+---
+
+Amazon generated $574.8 billion in revenue in 2023<sup>[[1]](#sources)</sup>, surpassing Saudi Aramco to rank among the highest-revenue companies on earth. But if you look at it purely as a company that "sells things," the number is hard to explain. To understand how Amazon got here, you have to start with the whole ecosystem.
+
+## Amazon's Business Ecosystem
+
+Amazon's revenue comes from several fundamentally different types of business:
+
+**Retail**: Amazon buys and sells its own inventory. Margins are razor-thin — often negative — but it drives traffic and anchors the customer experience.
+
+**Third-party seller services**: Other merchants sell on Amazon's marketplace. Amazon charges commissions, fulfillment fees, and advertising. More sellers attract more buyers; more buyers attract more sellers. Classic two-sided network effects.
+
+**Advertising**: One of the fastest-growing segments in recent years. Shoppers searching for products have clear purchase intent, making Amazon ads far more effective than social media placements. Advertising revenue reached $46.9 billion in 2023<sup>[[1]](#sources)</sup>, at very high margins.
+
+**Prime membership**: Annual subscription that bundles free shipping, Prime Video, music, and more. Members spend more and churn less — the lubricant of the whole flywheel.
+
+**AWS (Amazon Web Services)**: A cloud computing business entirely separate from e-commerce. More on this shortly.
+
+These businesses reinforce each other. E-commerce scale funds the logistics network; logistics lowers fulfillment costs; Prime increases purchase frequency; advertising extracts value from the traffic; AWS uses technical infrastructure to fund the entire group's profits.
+
+## The Profit Engine
+
+Being the world's top revenue company is one thing. What's truly striking about Amazon is its profit structure — and that structure is deeply uneven.
+
+Amazon's total operating income in 2023 was $36.9 billion<sup>[[1]](#sources)</sup>. North American retail contributed $14.9 billion in operating income, while the international segment ran a $2.7 billion operating loss for the year.
+
+There is one real profit engine: AWS.
+
+## AWS's Share of Revenue and Profit
+
+AWS generated $90.8 billion in revenue in 2023 — about 15.8% of Amazon's total<sup>[[1]](#sources)</sup>.
+
+But it contributed $24.6 billion in operating income — **66.7% of Amazon's total operating profit**<sup>[[1]](#sources)</sup>.
+
+Less than 16% of revenue, carrying nearly two-thirds of the profit. That ratio isn't coincidental. It's a direct consequence of how cloud infrastructure is structured.
+
+## Why AWS Margins Are So High: The Economics of Cloud Infrastructure
+
+The core economic logic of cloud computing is **declining marginal cost**.
+
+Building cloud infrastructure requires large upfront fixed costs: data centers, servers, network capacity, operations staff. Once those are in place, adding one more customer costs almost nothing. When a new user creates an S3 bucket, the system allocates storage — the marginal cost of that operation is effectively zero.
+
+Meanwhile, revenue keeps growing. More customers means more revenue, but total costs grow far slower than revenue. This is why AWS sustains strong operating margins — reaching 27.1% in 2023<sup>[[1]](#sources)</sup>.
+
+The deeper advantage is the **scale barrier**. Data centers take 3–5 years to build and cost tens of billions of dollars. Once a cloud provider reaches scale, competitors can't match their pricing — not because they lack capability, but because their fixed costs haven't been amortized yet. Amazon has been running AWS since 2006. Nearly two decades of head start have translated into a cost moat that is genuinely hard to close.
+
+## Why E-Commerce Infrastructure Can't Match Cloud's Marginal Cost
+
+Once you understand AWS's economics, the contrast with e-commerce becomes obvious.
+
+**E-commerce's marginal costs don't disappear.**
+
+Every additional order requires:
+- Someone in a warehouse to pick and pack it
+- A vehicle to deliver it
+- Reverse logistics if it's returned
+
+These costs grow roughly linearly with order volume — and nonlinearly during peak seasons, when temporary labor, expedited shipping, and warehouse overflow all kick in. Amazon operates more than 1,000 fulfillment centers globally and employs roughly 1.5 million people. These are real, persistent marginal costs.
+
+Cloud computing, by contrast, handles data and computation — pure software-layer operations. A single server handles thousands of concurrent requests. Adding a new user doesn't require adding a new person.
+
+This isn't to say e-commerce has no scale advantages. Amazon's procurement leverage, the density of its logistics network, and the optimization of its warehouse placement are all genuine scale effects. But the ceiling on those advantages is far lower than what software infrastructure can achieve. E-commerce gross margins top out somewhere around 20–30%. Cloud can reach 60% or more.
+
+---
+
+This is Amazon's core structure: a massive, thin-margin e-commerce ecosystem that accumulated world-scale users and data, paired with a high-margin AWS that funds the entire group's R&D and expansion. Two legs that don't interfere with each other — and mutually reinforce each other.
+
+Bezos understood early on that Amazon's real business was never books, or products, but **infrastructure**. AWS is the most direct expression of that conviction.
+
+---
+
+<a name="sources"></a>**Sources**
+
+[1] Amazon.com, Inc. — [Q4 & Full Year 2023 Earnings Release](https://ir.aboutamazon.com/news-release/news-release-details/2024/Amazon.com-Announces-Fourth-Quarter-Results/default.aspx) (Amazon Investor Relations, February 1, 2024)
