@@ -80,4 +80,4 @@ AWS 2023 年收入 908 亿美元，占集团总收入约 15.8%<sup>[[1]](#source
 
 <a name="sources"></a>**数据来源**
 
-[1] Amazon.com, Inc. — [Q4 & Full Year 2023 Earnings Release](https://ir.aboutamazon.com/news-release/news-release-details/2024/Amazon.com-Announces-Fourth-Quarter-Results/default.aspx)（Amazon Investor Relations，2024 年 2 月 1 日）
+[1] Amazon.com, Inc. — [Q4 and Full Year 2023 Earnings Release](https://ir.aboutamazon.com/news-release/news-release-details/2024/Amazon.com-Announces-Fourth-Quarter-Results/default.aspx)（Amazon Investor Relations，2024 年 2 月 1 日）
