@@ -2,7 +2,7 @@
 layout: post
 title:  "Does the B+ Tree Index Still Matter in the SSD Era?"
 date:   2026-01-02 11:07:41 +0800
-categories: Algorithms & Data Structures
+categories: Algorithms and Data Structures
 lang: en
 ref: bt
 ---
